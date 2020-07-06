@@ -21,3 +21,6 @@ $container["view"] = function ($container) use ($app) {
 $container["WebController"] = function ($container) {
 	return new App\Controllers\WebController($container);
 };
+$container["AuthController"] = function ($container) {
+	return new App\Controllers\AuthController($container);
+};

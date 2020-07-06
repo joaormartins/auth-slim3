@@ -25,13 +25,13 @@
     	<div class="collapse navbar-collapse" id="main_menu">
     		<ul class="navbar-nav mr-auto">
     			<li class="nav-item">
-    				<a class="nav-link" href="#">Home</a>
+    				<a class="nav-link" href="{{ path_for('home') }}">Home</a>
     			</li>
     			<li class="nav-item">
-    				<a class="nav-link" href="#">Login</a>
+    				<a class="nav-link" href="{{ path_for('auth.login') }}">Login</a>
     			</li>
     			<li class="nav-item">
-    				<a class="nav-link" href="#">Register</a>
+    				<a class="nav-link" href="{{ path_for('auth.register') }}">Register</a>
     			</li>
     		</ul>
     	</div>
