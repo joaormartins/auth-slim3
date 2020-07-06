@@ -2,6 +2,16 @@
 
 $container = $app->getContainer();
 
+// database
+$capsule = new Illuminate\Database\Capsule\Manager();
+$capsule->addConnection($container["settings"]["db"]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+$container["db"] = function ($container) use ($capsule) {
+	return $capsule;
+};
+
 // view
 $container["view"] = function ($container) use ($app) {
 	$config = $container->get("settings");
