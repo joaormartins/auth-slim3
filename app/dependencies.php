@@ -18,6 +18,9 @@ $container["db"] = function ($container) use ($capsule) {
 $container["auth"] = function ($container) {
 	return new App\Auth\Auth($container);
 };
+$container["flash"] = function () {
+	return new Slim\Flash\Messages();
+};
 
 // view
 $container["view"] = function ($container) use ($app) {
@@ -30,6 +33,9 @@ $container["view"] = function ($container) use ($app) {
 		$container->get("router"),
 		$container->get("request")->getUri()
 	));
+
+	// flash msgs
+	$view->getEnvironment()->addGlobal("flash", $container->flash->getMessages());
 
 	// auth data
 	$view->getEnvironment()->addGlobal("auth", [

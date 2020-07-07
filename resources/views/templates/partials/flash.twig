@@ -1,0 +1,17 @@
+{% for msg in flash.error %}
+<div class="alert alert-danger">
+	{{ msg | raw }}
+</div>
+{% endfor %}
+
+{% for msg in flash.success %}
+<div class="alert alert-success">
+	{{ msg | raw }}
+</div>
+{% endfor %}
+
+{% for msg in flash.info %}
+<div class="alert alert-info">
+	{{ msg | raw }}
+</div>
+{% endfor %}

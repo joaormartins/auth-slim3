@@ -39,6 +39,11 @@
 </nav>
 
 <div class="container">
+
+    <div class="flash">
+        {% include 'templates/partials/flash.twig' %}
+    </div>
+
 	{% block content %}{% endblock %}
 </div>
 
