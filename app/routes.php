@@ -13,3 +13,5 @@ $app->group("/auth", function ($container) use ($app) {
 	$app->post("/register", "AuthController:postRegister");
 
 });
+
+$app->get("/logout", "AuthController:logout")->setName("auth.logout");

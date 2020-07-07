@@ -61,4 +61,11 @@ class AuthController extends Controller {
 		return $response->withRedirect($this->router->pathFor("home"));
 	}
 
+	public function logout($request, $response)
+	{
+		$this->flash->addMessage("info", "Session ended Successfully, come back soon {$this->auth->user()->username}");
+		$this->auth->logout();
+		return $response->withRedirect($this->router->pathFor("auth.login"));
+	}
+
 }

@@ -32,7 +32,7 @@
                     <a id="user_drop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Joao Junior</a>
                     <div class="dropdown-menu" aria-labelledby="user_drop">
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{ path_for('auth.logout') }}">Logout</a>
                     </div>
                 </li>
                 {% else %}
