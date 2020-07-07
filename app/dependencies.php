@@ -50,6 +50,7 @@ $container["view"] = function ($container) use ($app) {
 $container["validation"] = function () {
 	return new App\Validation\Validator();
 };
+v::with("App\\Validation\\Rules\\");
 
 $container["WebController"] = function ($container) {
 	return new App\Controllers\WebController($container);
