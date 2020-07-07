@@ -30,15 +30,17 @@ class AuthController extends Controller {
 		]);
 
 		if ($v->failed()) {
+			$this->flash->addMessage("error", $v->first());
 			return $response->withRedirect($this->router->pathFor("auth.register"));
 		}
 
-		User::create([
+		$user = User::create([
 			"username" => $request->getParam("username"),
 			"email" => $request->getParam("email"),
 			"password" => password_hash($request->getParam("password"), PASSWORD_DEFAULT)
 		]);
 
+		$this->flash->addMessage("success", "Successfully registration!");
 		return $response->withRedirect($this->router->pathFor("home"));
 	}
 
