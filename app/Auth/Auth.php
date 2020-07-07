@@ -41,6 +41,31 @@ class Auth {
 		$this->state = self::NONE;
 	}
 
+	public function loginAttemp(array $params): bool
+	{
+		$username = $params["username"];
+		$passwd = $params["password"];
+
+		if (empty($username) || empty($passwd)) {
+			$this->error = "One of the fields is empty";
+			return false;
+		}
+
+		if (!$user = User::where("username", $username)->orWhere("email", $username)->first()) {
+			$this->error = "Username or email not found";
+			return false;
+		}
+
+		if (!password_verify($passwd, $user->password)) {
+			$this->error = "The entered password is incorrect";
+			return false;
+		}
+
+		// loga
+
+		return true;
+	}
+
 	public function loginState(): int
 	{
 		return $this->state ?? self::NONE;

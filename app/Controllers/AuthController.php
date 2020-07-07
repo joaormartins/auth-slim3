@@ -13,6 +13,19 @@ class AuthController extends Controller {
 		return $this->view->render($response, "auth/login.twig");
 	}
 
+	public function postLogin($request, $response)
+	{
+		$pass = $this->auth->loginAttemp($request->getParams());
+
+		if (!$pass) {
+			$this->flash->addMessage("error", $this->auth->error);
+			return $response->withRedirect($this->router->pathFor("auth.login"));
+		}
+
+		$this->flash->addMessage("success", "Successfully login!");
+		return $response->withRedirect($this->router->pathFor("home"));
+	}
+
 
 	// pagina do cadastro (GET)
 	public function register($request, $response)
