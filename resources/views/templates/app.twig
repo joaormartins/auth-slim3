@@ -23,16 +23,26 @@
     	</button>
 
     	<div class="collapse navbar-collapse" id="main_menu">
-    		<ul class="navbar-nav mr-auto">
+    		<ul class="navbar-nav ml-auto">
     			<li class="nav-item">
     				<a class="nav-link" href="{{ path_for('home') }}">Home</a>
     			</li>
-    			<li class="nav-item">
-    				<a class="nav-link" href="{{ path_for('auth.login') }}">Login</a>
-    			</li>
-    			<li class="nav-item">
-    				<a class="nav-link" href="{{ path_for('auth.register') }}">Register</a>
-    			</li>
+    			{% if auth.state %}
+                <li class="nav-item dropdown">
+                    <a id="user_drop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Joao Junior</a>
+                    <div class="dropdown-menu" aria-labelledby="user_drop">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path_for('auth.login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path_for('auth.register') }}">Register</a>
+                </li>
+                {% endif %}
     		</ul>
     	</div>
 	</div>

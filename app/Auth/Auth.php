@@ -9,7 +9,7 @@ class Auth {
 	const LOGGED = 1;
 	const ADMIN = 2;
 
-	protected $container;
+	protected $container, $config;
 
 	protected $state, $user;
 
@@ -18,6 +18,7 @@ class Auth {
 	public function __construct($container)
 	{
 		$this->container = $container;
+		$this->config = $container->settings["auth"];
 
 		// check
 		$this->check();
@@ -25,16 +26,11 @@ class Auth {
 
 	protected function check(): void
 	{
-		$config = $this->container["settings"];
-		$session = $_SESSION[$config["session"]] ?? null;
+		$session = $_SESSION[$this->config["session"]] ?? null;
 
 		if ($session && $user = User::find($session)) {
 			$this->user = $user;
-			if ($user->admin) {
-				$this->state = self::ADMIN;
-				return;
-			}
-			$this->state = self::LOGGED;
+			$this->state = $user->admin ? self::ADMIN : self::LOGGED;
 			return;
 		}
 		$this->user = null;
@@ -62,8 +58,16 @@ class Auth {
 		}
 
 		// loga
+		$this->login($user);
 
 		return true;
+	}
+
+	public function login(User $user)
+	{
+		$_SESSION[$this->config["session"]] = $user->id;
+		$this->state = $user->admin ? self::ADMIN : self::LOGGED;
+		$this->user = $user;
 	}
 
 	public function loginState(): int

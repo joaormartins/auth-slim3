@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+// var_dump($_SESSION);
 
 require __DIR__ . "/../vendor/autoload.php";
 

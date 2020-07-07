@@ -54,6 +54,9 @@ class AuthController extends Controller {
 			"password" => password_hash($request->getParam("password"), PASSWORD_DEFAULT)
 		]);
 
+		// loga
+		$this->auth->login($user);
+
 		$this->flash->addMessage("success", "Successfully registration!");
 		return $response->withRedirect($this->router->pathFor("home"));
 	}
