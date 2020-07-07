@@ -23,7 +23,6 @@ class Auth {
 		$this->check();
 	}
 
-
 	protected function check(): void
 	{
 		$config = $this->container["settings"];

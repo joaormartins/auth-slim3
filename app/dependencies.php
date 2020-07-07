@@ -1,5 +1,7 @@
 <?php
 
+use Respect\Validation\Validator as v;
+
 $container = $app->getContainer();
 
 // database
@@ -39,6 +41,9 @@ $container["view"] = function ($container) use ($app) {
 	return $view;
 };
 
+$container["validation"] = function () {
+	return new App\Validation\Validator();
+};
 
 $container["WebController"] = function ($container) {
 	return new App\Controllers\WebController($container);

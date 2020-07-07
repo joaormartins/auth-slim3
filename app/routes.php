@@ -9,5 +9,6 @@ $app->group("/auth", function ($container) use ($app) {
 	$app->get("/login", "AuthController:login")->setName("auth.login");
 
 	$app->get("/register", "AuthController:register")->setName("auth.register");
+	$app->post("/register", "AuthController:postRegister");
 
 });
