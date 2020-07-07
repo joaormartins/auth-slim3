@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 06-Jul-2020 às 21:13
+-- Generation Time: 07-Jul-2020 às 10:27
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `email_confirmed` tinyint(1) NOT NULL DEFAULT '0',
   `password` varchar(60) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)

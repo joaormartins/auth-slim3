@@ -15,6 +15,7 @@ return [
 			]
 		],
 
+		// database Settings
 		"db" => [
 			"driver" => "mysql",
 			"host" => "localhost",
@@ -24,6 +25,13 @@ return [
 			"charset" => "utf8",
 			"collation" => "utf8_unicode_ci",
 			"prefix" => ""
+		],
+
+
+		// auth settings
+		"auth" => [
+			"session" => "user_id",
+			"remember" => "user_r"
 		]
 	]
 ];
