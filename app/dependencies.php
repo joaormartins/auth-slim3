@@ -36,7 +36,7 @@ $container["view"] = function ($container) use ($app) {
 
 	// flash msgs
 	$view->getEnvironment()->addGlobal("flash", $container->flash->getMessages());
-
+	
 	// auth data
 	$view->getEnvironment()->addGlobal("auth", [
 		"state" => $container->auth->loginState(),

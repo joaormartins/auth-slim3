@@ -7,8 +7,6 @@
 
 	<!-- bootstrap css -->
 	<link rel="stylesheet" type="text/css" href="{{ base_url() }}/css/bootstrap.min.css">
-    <!-- font awesome -->
-    <link rel="stylesheet" type="text/css" href="{{ base_url() }}/font-awesome/css/font-awesome.min.css">
 
     <!-- //- -->
 	<link rel="stylesheet" type="text/css" href="{{ base_url() }}/css/app.css">
@@ -27,23 +25,20 @@
 
     	<div class="collapse navbar-collapse" id="main_menu">
     		<ul class="navbar-nav ml-auto">
-    			<li class="nav-item">
-    				<a class="nav-link" href="{{ path_for('home') }}"><i class="fa fa-home"></i> Home</a>
-    			</li>
     			{% if auth.state %}
                 <li class="nav-item dropdown">
-                    <a id="user_drop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-user"></i>Joao Junior</a>
+                    <a id="user_drop" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">{{ auth.user.username }}</a>
                     <div class="dropdown-menu" aria-labelledby="user_drop">
-                        <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Settings</a>
-                        <a class="dropdown-item" href="{{ path_for('auth.logout') }}" onclick="return confirm('Are you sure you want to quit? OK to confirm.');"><i class="fa fa-sign-out"></i> Logout</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="{{ path_for('auth.logout') }}" onclick="return confirm('Are you sure you want to quit? OK to confirm.');">Logout</a>
                     </div>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path_for('auth.login') }}"><i class="fa fa-sign-in"></i> Login</a>
+                    <a class="nav-link" href="{{ path_for('auth.login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path_for('auth.register') }}"><i class="fa fa-user-plus"></i> Register</a>
+                    <a class="nav-link" href="{{ path_for('auth.register') }}">Register</a>
                 </li>
                 {% endif %}
     		</ul>

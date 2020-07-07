@@ -57,7 +57,6 @@ class Auth {
 			return false;
 		}
 
-		// loga
 		$this->login($user);
 
 		return true;
