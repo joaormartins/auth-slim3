@@ -14,4 +14,13 @@ $app->group("/auth", function ($container) use ($app) {
 
 })->add(new App\Middleware\GhostMiddleware($container));
 
-$app->get("/logout", "AuthController:logout")->setName("auth.logout");
+
+$app->group("/user", function ($container) use ($app) {
+
+
+	$app->get("/profile", "UserController:profile")->setName("user.profile");
+
+	// logout action
+	$app->get("/logout", "AuthController:logout")->setName("auth.logout");
+
+})->add(new App\Middleware\AuthMiddleware($container));
