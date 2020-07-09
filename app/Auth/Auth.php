@@ -44,17 +44,17 @@ class Auth {
 		$passwd = $params["password"];
 
 		if (empty($username) || empty($passwd)) {
-			$this->error = "One of the fields is empty";
+			$this->error = "É necessario preencher todos os campos para fazer login";
 			return false;
 		}
 
 		if (!$user = User::where("username", $username)->orWhere("email", $username)->first()) {
-			$this->error = "Username or email not found";
+			$this->error = "Nome de usuario ou Email não encontrado :/";
 			return false;
 		}
 
 		if (!password_verify($passwd, $user->password)) {
-			$this->error = "The entered password is incorrect";
+			$this->error = "A senha inserida está incorreta";
 			return false;
 		}
 
