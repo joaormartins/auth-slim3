@@ -17,6 +17,8 @@
 				<input type="password" name="password" class="form-control" value="{{ old.password }}" required>
 			</div>
 
+			{{ csrf.field | raw }}
+
 			<div class="remember">
 				<label>
 					<input type="checkbox" name="remember">

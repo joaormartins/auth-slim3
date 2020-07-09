@@ -52,6 +52,11 @@ $container["validation"] = function () {
 };
 v::with("App\\Validation\\Rules\\");
 
+$container["csrf"] = function ($container) {
+	return new Slim\Csrf\Guard();
+};
+
+
 $container["WebController"] = function ($container) {
 	return new App\Controllers\WebController($container);
 };
