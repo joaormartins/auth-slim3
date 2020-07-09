@@ -2,32 +2,33 @@
 
 
 {% block content %}
-<div class="row justify-content-center">
+<div class="row">
 	<div class="col-md-6">
+		<h3>Registrar-Se</h3>
 		<form class="form" method="post" action="{{ path_for('auth.register') }}">
 
 			<div class="form-group">
-				<label>Username:</label>
-				<input type="text" name="username" class="form-control" value="{{ old.username }}" maxlength="15" placeholder="Username">
+				<label>Nome de Usuario:</label>
+				<input type="text" name="username" class="form-control" value="{{ old.username }}" maxlength="15">
 			</div>
 
 			<div class="form-group">
 				<label>Email:</label>
-				<input type="email" name="email" class="form-control" value="{{ old.email }}" placeholder="@">
+				<input type="email" name="email" class="form-control" value="{{ old.email }}" placeholder="usuario@exemplo.com">
 			</div>
 
 			<div class="form-group">
-				<label>Password:</label>
-				<input type="password" name="password" class="form-control" value="{{ old.password }}" placeholder="***">
+				<label>Senha:</label>
+				<input type="password" name="password" class="form-control" value="{{ old.password }}">
 			</div>
 
 			<div class="form-group">
-				<label>Confirm password:</label>
-				<input type="password" name="password_confirm" class="form-control" placeholder="Confirm">
+				<label>Confirme a senha:</label>
+				<input type="password" name="password_confirm" class="form-control" placeholder="Confirme">
 			</div>
 
-			<div class="mt-4">
-				<input type="submit" value="Register" class="btn btn-primary">
+			<div>
+				<input type="submit" value="Cadastrar" class="btn btn-primary">
 			</div>
 		</form>
 	</div>

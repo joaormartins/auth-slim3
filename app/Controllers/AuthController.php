@@ -22,8 +22,8 @@ class AuthController extends Controller {
 			return $response->withRedirect($this->router->pathFor("auth.login"));
 		}
 
-		$this->flash->addMessage("success", "Successfully login!");
-		return $response->withRedirect($this->router->pathFor("home"));
+		$this->flash->addMessage("info", "Login realizado com sucesso, seja bem vindo {$this->auth->user()->username}");
+		return $response->withRedirect($this->router->pathFor("user.profile"));
 	}
 
 
@@ -48,22 +48,19 @@ class AuthController extends Controller {
 			return $response->withRedirect($this->router->pathFor("auth.register"));
 		}
 
-		$user = User::create([
+		User::create([
 			"username" => $request->getParam("username"),
 			"email" => $request->getParam("email"),
 			"password" => password_hash($request->getParam("password"), PASSWORD_DEFAULT)
 		]);
 
-		// loga
-		$this->auth->login($user);
-
-		$this->flash->addMessage("success", "Successfully registration!");
+		$this->flash->addMessage("success", "Cadastro realizado com sucesso! Voce ja pode fazer Login");
 		return $response->withRedirect($this->router->pathFor("home"));
 	}
 
 	public function logout($request, $response)
 	{
-		$this->flash->addMessage("info", "Session ended Successfully, come back soon {$this->auth->user()->username}");
+		$this->flash->addMessage("info", "Sessao encerrada com sucesso, volte logo {$this->auth->user()->username}");
 		$this->auth->logout();
 		return $response->withRedirect($this->router->pathFor("auth.login"));
 	}
