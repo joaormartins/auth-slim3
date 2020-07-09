@@ -5,8 +5,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- font awesome 4.7 CDN -->
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- bootstrap css CDN -->
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -36,10 +34,10 @@
                     <a href="#">{{ auth.user.username }}</a>
                 </li>
                 <li>
-                    <a href="{{ path_for('user.profile') }}"><i class="fa fa-user"></i> Perfil</a>
+                    <a href="{{ path_for('user.profile') }}">Perfil</a>
                 </li>
                 <li>
-                    <a href="{{ path_for('auth.logout') }}"><i class="fa fa-sign-out"></i> Sair</a>
+                    <a href="{{ path_for('auth.logout') }}">Sair</a>
                 </li>
                 {% else %}
                     

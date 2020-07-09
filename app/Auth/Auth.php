@@ -2,6 +2,7 @@
 namespace App\Auth;
 
 use App\Models\User;
+use App\Models\UserSession;
 
 class Auth {
 
@@ -57,18 +58,30 @@ class Auth {
 			return false;
 		}
 
-		$this->login($user);
+		$this->login($user, isset($params["remember"]));
 
 		return true;
 	}
 
-	public function login(User $user)
+	public function login(User $user, $remember = false)
 	{
 		$_SESSION[$this->config["session"]] = $user->id;
 		$this->state = $user->admin ? self::ADMIN : self::LOGGED;
 		$this->user = $user;
 
 		// remember
+		if ($remember) {
+			$hash = generateToken1();
+			$uagent = userAgentNoVersion();
+			$expiry = time()+60*60*24*30;
+			setcookie($this->config["remember"], $hash, $expiry, "/");
+			UserSession::updateOrCreate(
+				[ "user_id" => $user->id, "user_agent" => $uagent ],
+				[ "session" => $hash, "expiry" => $expiry ]
+			);
+		}
+		// muda id da sessao sempre que faz login
+		session_regenerate_id(true);
 	}
 
 	public function logout()
@@ -78,6 +91,12 @@ class Auth {
 		$this->user = null;
 
 		//remember
+		$remembCookie = $this->config["remember"];
+		if (isset($_COOKIE[$remembCookie])) {
+			$hash = $_COOKIE[$remembCookie];
+			setcookie($remembCookie, "", time()-1, "/");
+			UserSession::where("session", $hash)->where("user_agent", userAgentNoVersion())->delete();
+		}
 	}
 
 	public function loginState(): int
