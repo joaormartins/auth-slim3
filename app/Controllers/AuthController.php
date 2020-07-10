@@ -23,7 +23,7 @@ class AuthController extends Controller {
 		}
 
 		$this->flash->addMessage("info", "Login realizado com sucesso, seja bem vindo {$this->auth->user()->username}");
-		return $response->withRedirect($this->router->pathFor("user.profile"));
+		return $response->withRedirect($this->router->pathFor("home"));
 	}
 
 

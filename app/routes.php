@@ -18,7 +18,8 @@ $app->group("/auth", function ($container) use ($app) {
 $app->group("/user", function ($container) use ($app) {
 
 
-	$app->get("/profile", "UserController:profile")->setName("user.profile");
+	$app->get("/password/change", "UserController:changePassword")->setName("user.change_password");
+	$app->post("/password/change", "UserController:postChangePassword");
 
 	// logout action
 	$app->get("/logout", "AuthController:logout")->setName("auth.logout");

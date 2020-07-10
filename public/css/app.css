@@ -4,3 +4,12 @@ body {
 	color: #555;
 	background-color: #F6F6F6;
 }
+
+
+#user_profile .user-info {
+	display: flex;
+}
+#user_profile .user-img {
+	width: 100px;
+	height: 100px;
+}

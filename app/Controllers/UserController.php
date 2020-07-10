@@ -4,10 +4,15 @@ namespace App\Controllers;
 class UserController extends Controller {
 
 
-	public function profile($request, $response)
+	public function changePassword($request, $response)
 	{
 
-		return $this->view->render($response, "user/profile.twig");
+		return $this->view->render($response, "user/change_password.twig");
+	}
+
+	public function postChangePassword($request, $response)
+	{
+		
 	}
 
 }
