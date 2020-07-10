@@ -13,3 +13,12 @@ body {
 	width: 100px;
 	height: 100px;
 }
+
+
+.footer {
+	margin-top: 40px;
+	padding: 10px 15px;
+	background-color: #555;
+	color: #FFF;
+	border-radius: 0.5rem;
+}
