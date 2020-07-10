@@ -12,4 +12,15 @@ class User extends Model {
 		"email",
 		"password"
 	];
+
+
+	public function changePassword($new)
+	{
+		if (!password_get_info($new)["algo"]) {
+			$new = password_hash($new, PASSWORD_DEFAULT);
+		}
+
+		$this->password = $new;
+		return $this->save();
+	}
 }

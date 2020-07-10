@@ -6,6 +6,9 @@ use App\Models\UserSession;
 
 class Auth {
 
+	// chama trait de validacoes do usuario
+	use UserValidations;
+
 	const NONE = 0;
 	const LOGGED = 1;
 	const ADMIN = 2;
