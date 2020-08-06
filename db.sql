@@ -27,7 +27,8 @@ SET time_zone = "+00:00";
 --
 -- Estrutura da tabela `users`
 --
-
+# email_confirmed = 0 (a confirmar), 1 (confirmado)
+# admin = 0 (não é admin), 1 (é admin)
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -44,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Extraindo dados da tabela `users`
 --
-
+# $2y$10$/q5C76BcTmMl1cPROf4n5OkzmxuEzz3XwGzbSKuAXEfAFtS//gqli = 123456
 INSERT INTO `users` (`id`, `username`, `email`, `email_confirmed`, `password`, `admin`, `created_at`, `updated_at`) VALUES
 (1, 'JoaorMartins', 'joaormartins.dev@gmail.com', 0, '$2y$10$7l1R2qBWNb0qCEbrBEdr0uINquhVCIt6Jjmrum7SYd5spV6q6jawy', 1, '2020-07-07 20:18:14', '2020-07-07 20:18:14'),
 (3, 'ZicoFerreira', 'ezequielferreira@gmail.com', 0, '$2y$10$fpa4MSoWdcP9CBotl8gMm.CdH1jiOpA2lCogZygXkbyR9TPLh8Rn2', 0, '2020-07-07 22:09:39', '2020-07-07 22:09:39'),
