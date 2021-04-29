@@ -13,7 +13,7 @@
 	"require": {
 		"slim/slim": "3.*",
 		"slim/twig-view": "^2.1",
-		"illuminate/database": "^5.2",
+		"illuminate/database": "^6.20",
 		"respect/validation": "^1.0",
 		"slim/flash": "^0.1.0",
 		"slim/csrf": "^0.6.0"
